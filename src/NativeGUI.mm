@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
 	
 	myLabel.text = ofxStringToNSString( "---> Ahoy From Code! <---");
+	ofSendMessage("VIEW_DID_LOAD");
 }
 
 - (void)didReceiveMemoryWarning

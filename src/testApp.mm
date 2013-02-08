@@ -15,6 +15,10 @@ void testApp::setup(){
 	[ofxiPhoneGetGLView() addSubview:nativeGui.view];
 }
 
+void testApp::gotMessage(ofMessage msg){
+	cout << msg.message << endl;
+}
+
 //--------------------------------------------------------------
 void testApp::update(){
 
