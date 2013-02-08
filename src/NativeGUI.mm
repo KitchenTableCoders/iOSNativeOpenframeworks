@@ -31,7 +31,7 @@
     // Do any additional setup after loading the view from its nib.
 	
 	myLabel.text = ofxStringToNSString( "---> Ahoy From Code! <---");
-	ofSendMessage("VIEW_DID_LOAD");
+	ofSendMessage("NATIVE_VIEW_DID_LOAD");
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,5 +39,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)clearBtnPressed:(id)sender {
+	ofSendMessage("NATIVE_CLEAR_BTN_PRESSED");
+}
+
 
 @end

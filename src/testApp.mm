@@ -29,7 +29,16 @@ void testApp::setup(){
 }
 
 void testApp::gotMessage(ofMessage msg){
-	cout << msg.message << endl;
+	
+	if(msg.message == "NATIVE_CLEAR_BTN_PRESSED"){
+		cout << msg.message << endl;
+		myFbo.begin();
+		ofClear(0, 0, 0);
+		myFbo.end();
+	} else if (msg.message == "NATIVE_VIEW_DID_LOAD" ) {
+		cout << msg.message << endl;
+	}
+
 }
 
 void testApp::deleteOldTouches(){
@@ -73,7 +82,6 @@ void testApp::draw(){
 	for(int i = 0; i < touchVec.size(); i++){
 		ofTouchEventArgs _t = touchVec[i].touchEvent;
 		ofEllipse(_t.x, _t.y, touchVec[i].numTouchesAlive, touchVec[i].numTouchesAlive);
-		
 	}
 }
 

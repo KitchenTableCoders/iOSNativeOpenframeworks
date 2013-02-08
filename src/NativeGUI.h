@@ -19,6 +19,9 @@
 @interface NativeGUI : UIViewController
 
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
+
+-(IBAction)clearBtnPressed:(id)sender;
+
 @end
 
 #endif
