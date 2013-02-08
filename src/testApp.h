@@ -38,6 +38,8 @@ public:
 	
 	vector<Touch_t> touchVec;
 	void deleteOldTouches();
+	
+	ofFbo myFbo;
 };
 
 

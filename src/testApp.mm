@@ -13,6 +13,19 @@ void testApp::setup(){
 	nativeGui = [[NativeGUI alloc] initWithNibName:@"NativeGUI" bundle:Nil];
 	[nativeGui retain];
 	[ofxiPhoneGetGLView() addSubview:nativeGui.view];
+	
+	ofFbo::Settings settings;
+	settings.width = ofGetWidth();
+	settings.height = ofGetHeight();
+	settings.internalformat = GL_RGBA;
+	settings.numSamples = 0;
+	settings.useDepth = true;
+	settings.useStencil = true;
+	myFbo.allocate(settings);
+	
+	ofBackground(100);
+	ofEnableAlphaBlending();
+	
 }
 
 void testApp::gotMessage(ofMessage msg){
@@ -31,9 +44,7 @@ void testApp::deleteOldTouches(){
 		} else {
 			++it;
 		}
-		
     }
-
 }
 
 //--------------------------------------------------------------
@@ -43,9 +54,26 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
+	
+	myFbo.begin();
+	ofSetColor(255,75);
+	ofBeginShape();
+	for(int i = 0; i < touchVec.size(); i++){
+		ofTouchEventArgs _t = touchVec[i].touchEvent;
+		ofVertex(_t.x, _t.y);
+		
+	}
+	ofEndShape();
+	myFbo.end();
+	
+	myFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+	
+	ofSetColor(255, 0, 0,100);
 	for(int i = 0; i < touchVec.size(); i++){
 		ofTouchEventArgs _t = touchVec[i].touchEvent;
 		ofEllipse(_t.x, _t.y, touchVec[i].numTouchesAlive, touchVec[i].numTouchesAlive);
+		
 	}
 }
 
