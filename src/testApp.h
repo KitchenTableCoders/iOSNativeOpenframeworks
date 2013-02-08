@@ -8,6 +8,14 @@
 class testApp : public ofxiPhoneApp{
 	
 public:
+	
+	typedef struct {
+		int touchId;
+		bool isDown;
+		int numTouchesAlive;
+		ofTouchEventArgs touchEvent;
+	} Touch_t;
+	
 	void setup();
 	void update();
 	void draw();
@@ -28,6 +36,8 @@ public:
 	
 	NativeGUI * nativeGui;
 	
+	vector<Touch_t> touchVec;
+	void deleteOldTouches();
 };
 
 
