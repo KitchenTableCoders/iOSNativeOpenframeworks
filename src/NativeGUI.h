@@ -17,14 +17,16 @@
 
 
 @interface NativeGUI : UIViewController{
-
+	Boolean flipped;
 }
 
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
 @property (retain, nonatomic) IBOutlet UISlider *colorSlider;
+@property  Boolean flipped;
 
 -(IBAction)clearBtnPressed:(id)sender;
 -(IBAction)colorSliderMoved:(id)sender;
+-(void)flipView;
 
 @end
 

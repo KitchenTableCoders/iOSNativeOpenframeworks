@@ -29,8 +29,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+
+	int w = [self view].frame.size.width;
+	int h = [self view].frame.size.height;
 	
+	[[self view] setCenter:CGPointMake(h/2.,w/2.)];
+	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2 * -1)];
+
+	
+	[self.view setMultipleTouchEnabled:YES];
+	
+    // Do any additional setup after loading the view from its nib.
+	flipped = false;
 	myLabel.text = ofxStringToNSString( "---> Ahoy From Code! <---");
 	ofSendMessage("NATIVE_VIEW_DID_LOAD");
 }
@@ -49,6 +60,23 @@
 	UISlider *slider = (UISlider *)sender;
 	ofSendMessage("NATIVE_COLOR_SLIDER_VAL_CHANGED");
 
+}
+
+- (void)flipView {
+	
+	int w = [self view].frame.size.width;
+	int h = [self view].frame.size.height;
+	[[self view] setCenter:CGPointMake(w/2.,h/2.)];
+	
+	if(flipped){
+		[[self view] setTransform:CGAffineTransformMakeRotation(M_PI/2.)];
+	} else {
+		[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2 * -1)];
+	}
+	
+	flipped = !flipped;
+	
+	
 }
 
 

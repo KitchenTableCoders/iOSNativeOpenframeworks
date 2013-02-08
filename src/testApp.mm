@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofxAccelerometer.setup();
 	
 	//If you want a landscape oreintation 
-	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
+	//iPhoneSetOrientation(OF_ORIENTATION_180);
 	
 	ofBackground(127,127,127);
 	
@@ -26,6 +26,7 @@ void testApp::setup(){
 	ofBackground(100);
 	ofEnableAlphaBlending();
 	
+	
 }
 
 void testApp::gotMessage(ofMessage msg){
@@ -37,6 +38,8 @@ void testApp::gotMessage(ofMessage msg){
 		myFbo.end();
 	} else if (msg.message == "NATIVE_VIEW_DID_LOAD" ) {
 		cout << msg.message << endl;
+
+		
 	} else if (msg.message == "NATIVE_COLOR_SLIDER_VAL_CHANGED") {
 		//cout << [[nativeGui colorSlider] value] << endl;
 		//cout << nativeGui.colorSlider.value << endl;
@@ -163,6 +166,17 @@ void testApp::gotMemoryWarning(){
 
 //--------------------------------------------------------------
 void testApp::deviceOrientationChanged(int newOrientation){
+	
+	if(newOrientation == OF_ORIENTATION_90_LEFT || newOrientation == OF_ORIENTATION_90_RIGHT){
+		ofSetOrientation((ofOrientation)newOrientation);
+		if(oldOrientation != newOrientation || firstOrientationRun ){
+			if ( firstOrientationRun == false || newOrientation == OF_ORIENTATION_90_RIGHT )[nativeGui flipView];
+	
+		}
+		oldOrientation = newOrientation;
+		firstOrientationRun = false;
+	}
 
+	 
 }
 

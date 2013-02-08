@@ -40,6 +40,9 @@ public:
 	void deleteOldTouches();
 	
 	ofFbo myFbo;
+	
+	int oldOrientation;
+	bool firstOrientationRun = true;
 };
 
 
