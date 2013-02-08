@@ -35,7 +35,7 @@
 	int h = [self view].frame.size.height;
 	
 	[[self view] setCenter:CGPointMake(h/2.,w/2.)];
-	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2 * -1)];
+	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2 )];
 
 	
 	[self.view setMultipleTouchEnabled:YES];

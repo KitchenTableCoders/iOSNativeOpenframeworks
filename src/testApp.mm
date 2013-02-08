@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofxAccelerometer.setup();
 	
 	//If you want a landscape oreintation 
-	//iPhoneSetOrientation(OF_ORIENTATION_180);
+	iPhoneSetOrientation(OF_ORIENTATION_90_RIGHT);
 	
 	ofBackground(127,127,127);
 	
