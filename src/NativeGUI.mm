@@ -7,12 +7,14 @@
 //
 
 #import "NativeGUI.h"
-
+/*
 @interface NativeGUI ()
 
 @end
+*/
 
 @implementation NativeGUI
+@synthesize myLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	
+	myLabel.text = ofxStringToNSString( "---> Ahoy From Code! <---");
 }
 
 - (void)didReceiveMemoryWarning
