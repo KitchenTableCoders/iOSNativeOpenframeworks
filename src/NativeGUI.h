@@ -16,11 +16,15 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NativeGUI : UIViewController
+@interface NativeGUI : UIViewController{
+
+}
 
 @property (retain, nonatomic) IBOutlet UILabel *myLabel;
+@property (retain, nonatomic) IBOutlet UISlider *colorSlider;
 
 -(IBAction)clearBtnPressed:(id)sender;
+-(IBAction)colorSliderMoved:(id)sender;
 
 @end
 

@@ -15,6 +15,7 @@
 
 @implementation NativeGUI
 @synthesize myLabel;
+@synthesize colorSlider;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +43,12 @@
 
 -(IBAction)clearBtnPressed:(id)sender {
 	ofSendMessage("NATIVE_CLEAR_BTN_PRESSED");
+}
+
+-(IBAction)colorSliderMoved:(id)sender {
+	UISlider *slider = (UISlider *)sender;
+	ofSendMessage("NATIVE_COLOR_SLIDER_VAL_CHANGED");
+
 }
 
 

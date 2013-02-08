@@ -37,6 +37,9 @@ void testApp::gotMessage(ofMessage msg){
 		myFbo.end();
 	} else if (msg.message == "NATIVE_VIEW_DID_LOAD" ) {
 		cout << msg.message << endl;
+	} else if (msg.message == "NATIVE_COLOR_SLIDER_VAL_CHANGED") {
+		//cout << [[nativeGui colorSlider] value] << endl;
+		//cout << nativeGui.colorSlider.value << endl;
 	}
 
 }
@@ -64,9 +67,11 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
-	
+
+	ofPushStyle();
 	myFbo.begin();
-	ofSetColor(255,75);
+	int drawColor = round(nativeGui.colorSlider.value);
+	ofSetColor(drawColor,75);
 	ofBeginShape();
 	for(int i = 0; i < touchVec.size(); i++){
 		ofTouchEventArgs _t = touchVec[i].touchEvent;
@@ -75,14 +80,19 @@ void testApp::draw(){
 	}
 	ofEndShape();
 	myFbo.end();
+	ofPopStyle();
 	
 	myFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
 	
+	ofPushStyle();
 	ofSetColor(255, 0, 0,100);
 	for(int i = 0; i < touchVec.size(); i++){
 		ofTouchEventArgs _t = touchVec[i].touchEvent;
 		ofEllipse(_t.x, _t.y, touchVec[i].numTouchesAlive, touchVec[i].numTouchesAlive);
 	}
+	ofPopStyle();
+	
+
 }
 
 //--------------------------------------------------------------
