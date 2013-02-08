@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
+#include "NativeGUI.h"
 
 class testApp : public ofxiPhoneApp{
 	
@@ -22,6 +23,8 @@ class testApp : public ofxiPhoneApp{
         void gotFocus();
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
+	
+	NativeGUI * nativeGui;
 
 };
 

@@ -9,6 +9,10 @@ void testApp::setup(){
 	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
 	
 	ofBackground(127,127,127);
+	
+	nativeGui = [[NativeGUI alloc] initWithNibName:@"NativeGUI" bundle:Nil];
+	[nativeGui retain];
+	[ofxiPhoneGetGLView() addSubview:nativeGui.view];
 }
 
 //--------------------------------------------------------------
