@@ -16,6 +16,7 @@
 @implementation NativeGUI
 @synthesize myLabel;
 @synthesize colorSlider;
+@synthesize flipped;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
